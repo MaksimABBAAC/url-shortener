@@ -34,7 +34,21 @@ func main() {
 		os.Exit(1)
 	}
 
-	_ = storage
+	id, err := storage.SaveURL("https:google.com", "google")
+
+	if err != nil {
+		log.Error("failed to insert", sl.Err(err))
+		os.Exit(1)
+	}
+	log.Info("savde url", slog.Int64("id", id))
+
+	id, err = storage.SaveURL("https:google.com", "google")
+
+	if err != nil {
+		log.Error("failed to insert", sl.Err(err))
+		os.Exit(1)
+	}
+
 	//TODO: init router chi, "chi render"
 
 	//TODO: run server
